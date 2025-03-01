@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 """
 Variant of "ls -l" that only shows size, date, and name, and comma-ifies the sizes.
@@ -34,7 +34,6 @@ l () {
 """
 
 import sys,re,os
-PY27 = sys.version_info >= (2,7)
 
 use_color = '--color=none' not in sys.argv
 
@@ -65,8 +64,6 @@ def commaize(s):
         num = int(s.strip())
     except ValueError:
         return s
-    if not PY27:
-        return str(num)
     # commaized = ("{:%d,}" % targetlen).format(num)
     # assert len(commaized) <= targetlen
     return "{:,}".format(num)
@@ -87,7 +84,7 @@ for size_str, line in zip(size_c_strs, lines):
     if m:
         line_after_first5 = re.sub(PAT, "", line)
         newline = " %s %s" % (size_str.rjust(maxlen), line_after_first5)
-        print newline
+        print(newline)
     else:
-        print line
+        print(line)
 
