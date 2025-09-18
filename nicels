@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""
+r"""
 Variant of "ls -l" that only shows size, date, and name, and comma-ifies the sizes.
 This is handy for data processing and modeling.
 

@@ -1,16 +1,13 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 """Pretty-print JSON from stdin on stdout.
 Like 'python -mjson.tool', except can handle a series of JSON objects (one per line)."""
 
 import sys
-try:
-  import simplejson as json
-except ImportError:
-  import json
+import json
 
 def pp(x):
   json.dump(x, sys.stdout, sort_keys=True, indent=4)
-  print
+  print()
 
 def my_loads(s):
   return json.loads(s)  #, object_pairs_hook=json.OrderedDict)

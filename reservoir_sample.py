@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 #
 # The reservoir sampling algorithm outputs a sample of N lines from a
 # file of undetermined size. It does so in a single pass, using memory
@@ -9,7 +9,7 @@
 #
 # adapted from https://github.com/dataspora/big-data-tools/blob/master/samplen.py
 #
-from __future__ import division
+# from __future__ import division
 import sys
 import random
 
