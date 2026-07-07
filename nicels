@@ -38,22 +38,22 @@ import sys,re,os
 use_color = '--color=none' not in sys.argv
 
 
-def fix_stdio():
-  sys.stdout = IOWrapper(sys.stdout)
-
-class IOWrapper:
-  # I like to press Ctrl-C; why is Python yelling at me?
-  def __init__(self, fp):
-    self.fp = fp
-  def write(self,*a,**k):
-    try:
-      self.fp.write(*a,**k)
-    except IOError, e:
-      if e.errno == 32:  # broken pipe
-        sys.exit(0)
-      raise e
-
-fix_stdio()
+# def fix_stdio():
+#   sys.stdout = IOWrapper(sys.stdout)
+# 
+# class IOWrapper:
+#   # I like to press Ctrl-C; why is Python yelling at me?
+#   def __init__(self, fp):
+#     self.fp = fp
+#   def write(self,*a,**k):
+#     try:
+#       self.fp.write(*a,**k)
+#     except IOError as e:
+#       if e.errno == 32:  # broken pipe
+#         sys.exit(0)
+#       raise e
+# 
+# fix_stdio()
 
 p = os.popen("env {envcolor}CLICOLOR_FORCE=1 ls {coloropts} -l {args}".format(
   envcolor='CLICOLOR_FORCE=1' if use_color else '',
